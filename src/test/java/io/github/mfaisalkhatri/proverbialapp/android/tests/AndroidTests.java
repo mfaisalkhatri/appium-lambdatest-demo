@@ -1,6 +1,6 @@
-package io.github.mfaisalkhatri.tests;
+package io.github.mfaisalkhatri.proverbialapp.android.tests;
 
-import io.github.mfaisalkhatri.pages.HomePage;
+import io.github.mfaisalkhatri.proverbialapp.android.pages.HomePage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

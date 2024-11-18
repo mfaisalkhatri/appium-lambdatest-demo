@@ -9,7 +9,7 @@
         <parameter name="version" value="12"/>
         <parameter name="device" value="Galaxy S22 5G"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.tests.AndroidTests">
+            <class name="io.github.mfaisalkhatri.proverbialapp.android.tests.AndroidTests">
                 <methods>
                     <include name="textTests"/>
                     <include name="notificationTest"/>
@@ -17,7 +17,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
     <test name="Android Proverbial app tests on Google Pixel 7">
         <parameter name="buildName" value="Android Proverbial app Build"/>
         <parameter name="testName" value="Proverbial android app tests on Pixel 7"/>
@@ -26,7 +26,7 @@
         <parameter name="version" value="13"/>
         <parameter name="device" value="Pixel 7"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.tests.AndroidTests">
+            <class name="io.github.mfaisalkhatri.proverbialapp.android.tests.AndroidTests">
                 <methods>
                     <include name="textTests"/>
                     <include name="notificationTest"/>
@@ -34,5 +34,5 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>
