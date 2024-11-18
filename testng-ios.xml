@@ -5,13 +5,12 @@
         <parameter name="buildName" value="Proverbial IOS app Build"/>
         <parameter name="testName" value="Proverbial ios app tests on iPhone 16"/>
         <parameter name="app" value="lt://APP10160351951731874234459103"/>
-        <parameter name="platformName" value="ios"/>
-        <parameter name="version" value="18"/>
-        <parameter name="device" value="iPhone 16"/>
+        <parameter name="platformVersion" value="18"/>
+        <parameter name="deviceName" value="iPhone 16"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.android.tests.AndroidTests">
+            <class name="io.github.mfaisalkhatri.proverbialapp.ios.tests.IOSTests">
                 <methods>
-                    <include name="textTests"/>
+                    <include name="testTextOnHomePage"/>
                 </methods>
             </class>
         </classes>

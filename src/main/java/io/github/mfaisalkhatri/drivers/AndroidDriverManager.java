@@ -24,8 +24,8 @@ public class AndroidDriverManager {
 
 
     private static final ThreadLocal<AndroidDriver> DRIVER = new ThreadLocal<>();
-    private static final String LT_USERNAME = System.getProperty("LT_USERNAME");
-    private static final String LT_ACCESS_KEY = System.getProperty("LT_ACCESS_KEY");
+    private static final String LT_USERNAME = System.getenv ("LT_USERNAME");
+    private static final String LT_ACCESS_KEY = System.getenv ("LT_ACCESS_KEY");
     private static final String GRID_URL = "@mobile-hub.lambdatest.com/wd/hub";
 
 
