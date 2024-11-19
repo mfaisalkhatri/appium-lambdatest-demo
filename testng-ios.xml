@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Proverbial iOS mobile automation tests">
-    <test name="Proverbial ios app test on LambdaTest real device iPhone 16">
+    <test name="Proverbial ios app test on LambdaTest real device iPhone 16" enabled="false">
         <parameter name="buildName" value="Proverbial IOS app Build"/>
         <parameter name="testName" value="Proverbial ios app tests on iPhone 16"/>
         <parameter name="app" value="lt://APP10160351951731874234459103"/>
@@ -9,6 +9,15 @@
         <parameter name="deviceName" value="iPhone 16"/>
         <classes>
             <class name="io.github.mfaisalkhatri.proverbialapp.ios.tests.IOSRealDeviceTests">
+                <methods>
+                    <include name="testTextOnHomePage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Proverbial ios app test on Simulator iPhone 16 Pro " enabled="true">
+        <classes>
+            <class name="io.github.mfaisalkhatri.proverbialapp.ios.tests.IOSSimulatorTests">
                 <methods>
                     <include name="testTextOnHomePage"/>
                 </methods>

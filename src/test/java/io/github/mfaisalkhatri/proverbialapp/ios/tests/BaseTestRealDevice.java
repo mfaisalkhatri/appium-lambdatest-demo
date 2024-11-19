@@ -21,7 +21,7 @@ public class BaseTestRealDevice {
     private static final String    GRID_URL      = "@mobile-hub.lambdatest.com/wd/hub";
     protected String status = "failed";
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     @Parameters ({ "deviceName" ,"platformVersion",  "app", "buildName", "testName" })
     public void setupTest (String deviceName, String platformVersion, String app, String buildName, String testName) {
         try {

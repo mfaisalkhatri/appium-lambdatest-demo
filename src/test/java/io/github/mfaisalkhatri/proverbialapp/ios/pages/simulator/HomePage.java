@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.proverbialapp.ios.pages;
+package io.github.mfaisalkhatri.proverbialapp.ios.pages.simulator;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.ios.IOSDriver;
@@ -13,7 +13,7 @@ public class HomePage {
     }
 
     private WebElement textBtn () {
-        return iosDriver.findElement (AppiumBy.iOSClassChain ("**/XCUIElementTypeButton[`name == 'Text'`]"));
+        return iosDriver.findElement (AppiumBy.accessibilityId ("text"));
     }
 
     public void tapOnTextBtn () {
@@ -21,7 +21,7 @@ public class HomePage {
     }
 
     public String getText () {
-        return iosDriver.findElement (AppiumBy.accessibilityId ("Textbox"))
+        return iosDriver.findElement (AppiumBy.className ("XCUIElementTypeTextView"))
             .getText ();
     }
 
