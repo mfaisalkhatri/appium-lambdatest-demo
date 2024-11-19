@@ -8,24 +8,25 @@ import java.time.Duration;
 import java.util.HashMap;
 
 import io.appium.java_client.ios.IOSDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
-public class BaseTest {
+public class BaseTestRealDevice {
 
     protected            IOSDriver iosDriver;
     private static final String    LT_USERNAME   = System.getenv ("LT_USERNAME");
     private static final String    LT_ACCESS_KEY = System.getenv ("LT_ACCESS_KEY");
     private static final String    GRID_URL      = "@mobile-hub.lambdatest.com/wd/hub";
+    protected String status = "failed";
 
     @BeforeClass
     @Parameters ({ "deviceName" ,"platformVersion",  "app", "buildName", "testName" })
     public void setupTest (String deviceName, String platformVersion, String app, String buildName, String testName) {
         try {
             iosDriver = new IOSDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_KEY, GRID_URL)),
-                setCapabilities (deviceName, platformVersion, app, buildName, testName));
+                xcuiTestOptions (deviceName, platformVersion, app, buildName, testName));
             setupBrowserTimeouts ();
 
         } catch (MalformedURLException e) {
@@ -33,19 +34,12 @@ public class BaseTest {
         }
     }
 
-    //    private XCUITestOptions xcuiTestOptions (String deviceName, String platformVersion, String app, String buildName,
-    //        String testName) {
-    //        XCUITestOptions xcuiTestOptions = new XCUITestOptions ();
-    //        xcuiTestOptions.setCapability ("lt:options", ltOptions (deviceName, platformVersion, app, buildName, testName));
-    //        return xcuiTestOptions;
-    //    }
-
-    private DesiredCapabilities setCapabilities (String deviceName, String platformVersion, String app,
-        String buildName, String testName) {
-        DesiredCapabilities capabilities = new DesiredCapabilities ();
-        capabilities.setCapability ("lt:options", ltOptions (deviceName, platformVersion, app, buildName, testName));
-        return capabilities;
-    }
+        private XCUITestOptions xcuiTestOptions (String deviceName, String platformVersion, String app, String buildName,
+            String testName) {
+            XCUITestOptions xcuiTestOptions = new XCUITestOptions ();
+            xcuiTestOptions.setCapability ("lt:options", ltOptions (deviceName, platformVersion, app, buildName, testName));
+            return xcuiTestOptions;
+        }
 
     private HashMap<String, Object> ltOptions (String deviceName, String platformVersion, String app, String buildName,
         String testName) {
@@ -56,7 +50,6 @@ public class BaseTest {
         ltOptions.put ("app", app);
         ltOptions.put ("build", buildName);
         ltOptions.put ("name", testName);
-      //  ltOptions.put ("appiumVersion", "2.11.2");
         ltOptions.put ("w3c", true);
         ltOptions.put ("isRealMobile", true);
         ltOptions.put ("autoGrantPermissions", true);
@@ -76,6 +69,7 @@ public class BaseTest {
 
     @AfterClass (alwaysRun = true)
     public void tearDown () {
+        this.iosDriver.executeScript("lambda-status=" + this.status);
         iosDriver.quit ();
     }
 
