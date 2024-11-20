@@ -1,6 +1,5 @@
 package io.github.mfaisalkhatri.proverbialapp.ios.tests;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -21,7 +20,7 @@ public class BaseTestSimulator {
     public void setupTest () {
         try {
             this.iosDriver = new IOSDriver (new URL ("http://127.0.0.1:4723/"), xcuiTestOptions ());
-            setupBrowserTimeouts ();
+            setupDriverTimeout ();
 
         } catch (MalformedURLException e) {
             throw new Error ("Error while creating IOS Driver Session");
@@ -40,14 +39,14 @@ public class BaseTestSimulator {
             .setNoReset (false);
     }
 
-    private void setupBrowserTimeouts () {
+    private void setupDriverTimeout () {
         this.iosDriver.manage ()
             .timeouts ()
             .implicitlyWait (Duration.ofSeconds (20));
     }
 
     @AfterClass (alwaysRun = true)
-    public void tearDown () throws IOException {
+    public void tearDown () {
         this.iosDriver.quit ();
     }
 }
