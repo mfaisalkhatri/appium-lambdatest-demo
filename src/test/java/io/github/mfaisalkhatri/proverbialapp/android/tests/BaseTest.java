@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.tests;
+package io.github.mfaisalkhatri.proverbialapp.android.tests;
 
 import io.github.mfaisalkhatri.drivers.AndroidDriverManager;
 import org.openqa.selenium.Platform;

@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.pages;
+package io.github.mfaisalkhatri.proverbialapp.android.pages;
 
 import io.appium.java_client.AppiumBy;
 import io.github.mfaisalkhatri.drivers.AndroidDriverManager;
