@@ -24,20 +24,17 @@
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
     <dependency>
       <groupId>io.appium</groupId>
       <artifactId>java-client</artifactId>
       <version>${appium-java-client-version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>${testng.version}</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
