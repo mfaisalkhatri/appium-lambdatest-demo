@@ -6,7 +6,7 @@ import io.github.mfaisalkhatri.proverbialapp.android.sampletests.pages.HomePage;
 import org.testng.annotations.Test;
 
 public class ProverbialAppTests extends BaseTest {
-
+    
     @Test
     public void testTextOnHomePage () {
         final HomePage homePage = new HomePage (this.androidDriver);
