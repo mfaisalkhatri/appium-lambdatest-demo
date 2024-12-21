@@ -14,5 +14,6 @@ public class ProverbialAppTests extends BaseTest {
         homePage.tapOnTextBtn ();
         assertEquals (homePage.getText (), "Proverbial");
         this.status = "passed";
+        System.out.println ("Test Passed!");
     }
 }
