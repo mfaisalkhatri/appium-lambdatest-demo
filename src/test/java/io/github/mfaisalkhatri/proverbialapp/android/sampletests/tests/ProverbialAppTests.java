@@ -15,5 +15,4 @@ public class ProverbialAppTests extends BaseTest {
         assertEquals (homePage.getText (), "Proverbial");
         this.status = "passed";
     }
-
 }
