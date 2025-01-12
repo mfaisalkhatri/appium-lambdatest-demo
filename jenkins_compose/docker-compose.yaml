@@ -1,0 +1,24 @@
+  # docker-compose.yaml
+  version: '3.8'
+  services:
+    jenkins:
+      image: jenkins/jenkins:lts
+      privileged: true
+      user: root
+      ports:
+       - 8080:8080
+       - 50000:50000
+      container_name: jenkins
+      volumes:
+      - /Users/faisalkhatri/jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    agent:
+      image: jenkins/ssh-agent:latest-jdk21
+      privileged: true
+      user: root
+      container_name: agent
+      expose:
+        - 22
+      environment:
+      - JENKINS_AGENT_SSH_PUBKEY=ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEnvpBuTsaCCG3zts8liJY/h6J7gKI6y6q0pc7xxcGZI faisalkhatri@Faisals-MacBook-Pro.local
