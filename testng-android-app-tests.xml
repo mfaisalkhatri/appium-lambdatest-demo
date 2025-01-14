@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lambda tests Mobile automation test suite" parallel="tests">
-    <test name="Android Proverbial app tests on Samsung S22 5G">
+<suite name="Lambda tests Mobile automation test suite">
+    <test name="Android Proverbial app tests on Samsung S24 Ultra">
         <classes>
             <class name="io.github.mfaisalkhatri.proverbialapp.android.sampletests.tests.ProverbialAppTests">
                 <methods>
