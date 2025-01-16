@@ -62,7 +62,7 @@ public class BaseTest {
             .timeouts ()
             .implicitlyWait (Duration.ofSeconds (20));
     }
-    
+
     private UiAutomator2Options uiAutomator2Options () {
         final UiAutomator2Options uiAutomator2Options = new UiAutomator2Options ();
         uiAutomator2Options.setCapability ("lt:options", ltOptions ());
