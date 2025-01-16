@@ -14,13 +14,13 @@ public class ProverbialAppTests extends BaseTest {
     @Test
     @Tag ("Android")
     public void testTextOnHomePage () {
-        verifyHomePageTextOnLoad ();
+        verifyHomePageTextOnAppLoad ();
         verifyTextChangeOnTappingTextButton ();
         this.status = "passed";
     }
 
     @Step ("Checking the Home page text when the app loads")
-    public void verifyHomePageTextOnLoad () {
+    public void verifyHomePageTextOnAppLoad () {
         final HomePage homePage = new HomePage (this.androidDriver);
         assertEquals (homePage.getText (), "Hello! Welcome to lambdatest Sample App called Proverbial");
     }
