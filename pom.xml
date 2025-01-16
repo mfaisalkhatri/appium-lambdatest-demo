@@ -15,12 +15,17 @@
         <appium-java-client-version>9.3.0</appium-java-client-version>
         <testng.version>7.10.2</testng.version>
         <lombok-version>1.18.36</lombok-version>
+        <allure.version>2.24.0</allure.version>
+        <aspectj.version>1.9.20.1</aspectj.version>
         <maven.compiler.version>3.13.0</maven.compiler.version>
         <java.release.version>17</java.release.version>
         <maven.surefire.version>3.5.2</maven.surefire.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
-        <suite-xml>${suite-xml}</suite-xml>
-        <argLine>-Dfile.encoding=UTF-8 -Xdebug -Xnoagent</argLine>
+        <suite-xml>testng.xml</suite-xml>
+        <argLine>-Dfile.encoding=UTF-8 -Xdebug -Xnoagent
+            -Dfile.encoding=${project.build.sourceEncoding}
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+        </argLine>
     </properties>
 
     <dependencies>
@@ -33,6 +38,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -79,6 +90,13 @@
                     </suiteXmlFiles>
                     <argLine>${argLine}</argLine>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
