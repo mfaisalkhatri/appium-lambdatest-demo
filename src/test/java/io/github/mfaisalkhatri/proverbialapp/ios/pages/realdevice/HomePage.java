@@ -6,23 +6,22 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage {
 
-    private IOSDriver iosDriver;
+    private final IOSDriver iosDriver;
 
-    public HomePage (IOSDriver iosDriver) {
+    public HomePage (final IOSDriver iosDriver) {
         this.iosDriver = iosDriver;
     }
 
-    private WebElement textBtn () {
-        return iosDriver.findElement (AppiumBy.iOSClassChain ("**/XCUIElementTypeButton[`name == 'Text'`]"));
+    public String getText () {
+        return this.iosDriver.findElement (AppiumBy.accessibilityId ("Textbox"))
+            .getText ();
     }
 
     public void tapOnTextBtn () {
         textBtn ().click ();
     }
 
-    public String getText () {
-        return iosDriver.findElement (AppiumBy.accessibilityId ("Textbox"))
-            .getText ();
+    private WebElement textBtn () {
+        return this.iosDriver.findElement (AppiumBy.iOSClassChain ("**/XCUIElementTypeButton[`name == 'Text'`]"));
     }
-
 }

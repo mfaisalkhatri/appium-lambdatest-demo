@@ -11,21 +11,7 @@ import io.appium.java_client.remote.AutomationName;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-
 public class BaseTestSimulator {
-
-    protected IOSDriver iosDriver;
-
-    @BeforeClass (alwaysRun = true)
-    public void setupTest () {
-        try {
-            this.iosDriver = new IOSDriver (new URL ("http://127.0.0.1:4723/"), xcuiTestOptions ());
-            setupDriverTimeout ();
-
-        } catch (MalformedURLException e) {
-            throw new Error ("Error while creating IOS Driver Session");
-        }
-    }
 
     private static XCUITestOptions xcuiTestOptions () {
         final String appPath = String.valueOf (
@@ -38,15 +24,27 @@ public class BaseTestSimulator {
             .autoAcceptAlerts ()
             .setNoReset (false);
     }
+    protected IOSDriver iosDriver;
 
-    private void setupDriverTimeout () {
-        this.iosDriver.manage ()
-            .timeouts ()
-            .implicitlyWait (Duration.ofSeconds (20));
+    @BeforeClass (alwaysRun = true)
+    public void setupTest () {
+        try {
+            this.iosDriver = new IOSDriver (new URL ("http://127.0.0.1:4723/"), xcuiTestOptions ());
+            setupDriverTimeout ();
+
+        } catch (final MalformedURLException e) {
+            throw new Error ("Error while creating IOS Driver Session");
+        }
     }
 
     @AfterClass (alwaysRun = true)
     public void tearDown () {
         this.iosDriver.quit ();
+    }
+
+    private void setupDriverTimeout () {
+        this.iosDriver.manage ()
+            .timeouts ()
+            .implicitlyWait (Duration.ofSeconds (20));
     }
 }

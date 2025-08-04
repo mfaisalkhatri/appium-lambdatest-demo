@@ -1,65 +1,64 @@
 package io.github.mfaisalkhatri.proverbialapp.android.pages;
 
+import java.time.Duration;
+
 import io.appium.java_client.AppiumBy;
 import io.github.mfaisalkhatri.drivers.AndroidDriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 public class HomePage {
 
     AndroidDriverManager androidDriverManager;
-    WebDriverWait wait;
+    WebDriverWait        wait;
 
-    public HomePage(final AndroidDriverManager androidDriverManager) {
+    public HomePage (final AndroidDriverManager androidDriverManager) {
         this.androidDriverManager = androidDriverManager;
-        wait = new WebDriverWait(androidDriverManager.getAndroidDriver(), Duration.ofSeconds(20));
+        this.wait = new WebDriverWait (androidDriverManager.getAndroidDriver (), Duration.ofSeconds (20));
     }
 
-    private WebElement textBtn() {
-        return androidDriverManager.getAndroidDriver()
-                .findElement(AppiumBy.id("Text"));
+    public String getText () {
+        return this.androidDriverManager.getAndroidDriver ()
+            .findElement (AppiumBy.id ("Textbox"))
+            .getText ();
     }
 
-    public void tapOnTextBtn() {
-        textBtn().click();
+    public WebElement notificationBar () {
+        return this.androidDriverManager.getAndroidDriver ()
+            .findElement (AppiumBy.id ("action_bar"));
     }
 
-    public String getText() {
-        return androidDriverManager.getAndroidDriver()
-                .findElement(AppiumBy.id("Textbox"))
-                .getText();
+    public void tapOnNotificationBtn () {
+        notificationBtn ().click ();
     }
 
-    private WebElement notificationBtn() {
-        return androidDriverManager.getAndroidDriver()
-                .findElement(AppiumBy.id("notification"));
+    public void tapOnTextBtn () {
+        textBtn ().click ();
     }
 
-    public void tapOnNotificationBtn() {
-        notificationBtn().click();
+    public void tapOnToastBtn () {
+        toastBtn ().click ();
     }
 
-    public WebElement notificationBar() {
-        return androidDriverManager.getAndroidDriver()
-                .findElement(AppiumBy.id("action_bar"));
+    public String toastMessage () {
+        return this.wait.until (
+                ExpectedConditions.presenceOfElementLocated (AppiumBy.xpath ("//android.widget.Toast[1]")))
+            .getText ();
     }
 
-    private WebElement toastBtn() {
-        return androidDriverManager.getAndroidDriver()
-                .findElement(AppiumBy.id("toast"));
+    private WebElement notificationBtn () {
+        return this.androidDriverManager.getAndroidDriver ()
+            .findElement (AppiumBy.id ("notification"));
     }
 
-    public void tapOnToastBtn() {
-        toastBtn().click();
+    private WebElement textBtn () {
+        return this.androidDriverManager.getAndroidDriver ()
+            .findElement (AppiumBy.id ("Text"));
     }
 
-    public String toastMessage() {
-        return wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Toast[1]")))
-                .getText();
+    private WebElement toastBtn () {
+        return this.androidDriverManager.getAndroidDriver ()
+            .findElement (AppiumBy.id ("toast"));
     }
-
-
 }

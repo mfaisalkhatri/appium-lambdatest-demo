@@ -9,10 +9,9 @@ public class IOSSimulatorTests extends BaseTestSimulator {
 
     @Test
     public void testTextOnHomePage () {
-        HomePage homePage = new HomePage (iosDriver);
+        final HomePage homePage = new HomePage (this.iosDriver);
         assertEquals (homePage.getText (), "Hello! Welcome to lambdatest Sample App called Proverbial");
         homePage.tapOnTextBtn ();
         assertEquals (homePage.getText (), "Proverbial");
     }
-
 }

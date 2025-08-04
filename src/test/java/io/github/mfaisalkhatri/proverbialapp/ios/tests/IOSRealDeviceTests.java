@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 public class IOSRealDeviceTests extends BaseTestRealDevice {
 
     @Test
-    public void testTextOnHomePage() {
-        HomePage homePage = new HomePage (iosDriver);
+    public void testTextOnHomePage () {
+        final HomePage homePage = new HomePage (this.iosDriver);
         assertEquals (homePage.getText (), "Hello! Welcome to lambdatest Sample App called Proverbial");
         homePage.tapOnTextBtn ();
         assertEquals (homePage.getText (), "Proverbial");

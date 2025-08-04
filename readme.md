@@ -1,27 +1,27 @@
-![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
-
 ## Don't forget to give a :star: to make the project popular.
 
 ## :question: What is this Repository about?
 
-- This repository contains the example code for running Mobile automation tests for Android using [Appium 2.0](https://appium.github.io/appium/docs/en/2.0/intro/)
+- This repository contains the example code for running Mobile automation tests for Android
+  using [Appium 2.0](https://appium.github.io/appium/docs/en/2.0/intro/)
 - Proverbial app built in react-native by LambdaTest is used as a demo mobile application
 - This repo uses `Maven` as build tool and `TestNG` testing framework to run the tests
-- Android application Tests are run on [LambdaTest Cloud grid](http://www.lambdatest.com?fp_ref=faisal58) on Real Android Devices 
+- Android application Tests are run on [LambdaTest Cloud grid](http://www.lambdatest.com?fp_ref=faisal58) on Real
+  Android Devices
 
 ## Talking more about the Scenarios Covered in this project:
 
 I have tried to answer the below questions by providing working code example in this repo:
 
-1. How to run mobile automation tests at scale using Appium and LambdaTest Cloud grid. 
+1. How to run mobile automation tests at scale using Appium and LambdaTest Cloud grid.
 
 ## How to run the Tests?
 
-
 ### Pre-Requisite:
 
-  - JAVA JDK 17 should be installed
-  - An Account should be available on [LamdaTest Cloud grid](http://www.lambdatest.com?fp_ref=faisal58) with a plan to run automated mobile tests. 
+- JAVA JDK 17 should be installed
+- An Account should be available on [LamdaTest Cloud grid](http://www.lambdatest.com?fp_ref=faisal58) with a plan to run
+  automated mobile tests.
 
 - Run the tests using `TestNG`:
 
@@ -51,6 +51,7 @@ Contact me for Paid trainings related to Test Automation and Software Testing,
 mail me @`mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn](https://www.linkedin.com/in/faisalkhatri/)
 
 ## :thought_balloon: Checkout the blogs related to Testing on the following links:
+
 - [Medium Blogs](https://medium.com/@iamfaisalkhatri)
 - [LambdaTest Blogs](https://www.lambdatest.com/blog/author/mfaisalkhatri/)
 - [My Website](https://mfaisalkhatri.github.io)
