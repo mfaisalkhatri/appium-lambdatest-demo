@@ -15,34 +15,35 @@ import org.testng.annotations.Parameters;
 
 public class BaseTestRealDevice {
 
-    protected            IOSDriver iosDriver;
-    private static final String    LT_USERNAME   = System.getenv ("LT_USERNAME");
-    private static final String    LT_ACCESS_KEY = System.getenv ("LT_ACCESS_KEY");
     private static final String    GRID_URL      = "@mobile-hub.lambdatest.com/wd/hub";
-    protected String status = "failed";
+    private static final String    LT_ACCESS_KEY = System.getenv ("LT_ACCESS_KEY");
+    private static final String    LT_USERNAME   = System.getenv ("LT_USERNAME");
+    protected            IOSDriver iosDriver;
+    protected            String    status        = "failed";
 
-    @BeforeClass(alwaysRun = true)
-    @Parameters ({ "deviceName" ,"platformVersion",  "app", "buildName", "testName" })
-    public void setupTest (String deviceName, String platformVersion, String app, String buildName, String testName) {
+    @BeforeClass (alwaysRun = true)
+    @Parameters ({ "deviceName", "platformVersion", "app", "buildName", "testName" })
+    public void setupTest (final String deviceName, final String platformVersion, final String app,
+        final String buildName, final String testName) {
         try {
-            iosDriver = new IOSDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_KEY, GRID_URL)),
+            this.iosDriver = new IOSDriver (
+                new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_KEY, GRID_URL)),
                 xcuiTestOptions (deviceName, platformVersion, app, buildName, testName));
             setupBrowserTimeouts ();
 
-        } catch (MalformedURLException e) {
+        } catch (final MalformedURLException e) {
             throw new Error ("Error while creating IOS Driver Session on LambdaTest cloud grid");
         }
     }
 
-        private XCUITestOptions xcuiTestOptions (String deviceName, String platformVersion, String app, String buildName,
-            String testName) {
-            XCUITestOptions xcuiTestOptions = new XCUITestOptions ();
-            xcuiTestOptions.setCapability ("lt:options", ltOptions (deviceName, platformVersion, app, buildName, testName));
-            return xcuiTestOptions;
-        }
+    @AfterClass (alwaysRun = true)
+    public void tearDown () {
+        this.iosDriver.executeScript ("lambda-status=" + this.status);
+        this.iosDriver.quit ();
+    }
 
-    private HashMap<String, Object> ltOptions (String deviceName, String platformVersion, String app, String buildName,
-        String testName) {
+    private HashMap<String, Object> ltOptions (final String deviceName, final String platformVersion, final String app,
+        final String buildName, final String testName) {
         final var ltOptions = new HashMap<String, Object> ();
         ltOptions.put ("platformName", "ios");
         ltOptions.put ("deviceName", deviceName);
@@ -53,7 +54,7 @@ public class BaseTestRealDevice {
         ltOptions.put ("w3c", true);
         ltOptions.put ("isRealMobile", true);
         ltOptions.put ("autoGrantPermissions", true);
-        ltOptions.put("autoAcceptAlerts", true);
+        ltOptions.put ("autoAcceptAlerts", true);
         ltOptions.put ("plugin", "java-testNG");
         ltOptions.put ("visual", true);
         ltOptions.put ("console", true);
@@ -62,15 +63,15 @@ public class BaseTestRealDevice {
     }
 
     private void setupBrowserTimeouts () {
-        iosDriver.manage ()
+        this.iosDriver.manage ()
             .timeouts ()
             .implicitlyWait (Duration.ofSeconds (20));
     }
 
-    @AfterClass (alwaysRun = true)
-    public void tearDown () {
-        this.iosDriver.executeScript("lambda-status=" + this.status);
-        iosDriver.quit ();
+    private XCUITestOptions xcuiTestOptions (final String deviceName, final String platformVersion, final String app,
+        final String buildName, final String testName) {
+        final XCUITestOptions xcuiTestOptions = new XCUITestOptions ();
+        xcuiTestOptions.setCapability ("lt:options", ltOptions (deviceName, platformVersion, app, buildName, testName));
+        return xcuiTestOptions;
     }
-
 }

@@ -68,5 +68,4 @@ public class BaseTest {
         uiAutomator2Options.setCapability ("lt:options", ltOptions ());
         return uiAutomator2Options;
     }
-
 }
